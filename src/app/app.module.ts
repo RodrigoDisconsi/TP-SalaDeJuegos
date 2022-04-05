@@ -11,6 +11,7 @@ import { DashboardComponent } from './componentes/dashboard/dashboard.component'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { HomeComponent } from './componentes/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { environment } from 'src/environments/environment';
     LoginComponent,
     RegisterComponent,
     LoginRegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
