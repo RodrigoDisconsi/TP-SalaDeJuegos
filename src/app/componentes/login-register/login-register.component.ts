@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginRegisterComponent implements OnInit {
 
+  click:boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+   
+  onClick(){
+    this.click = !this.click;
   }
 
 }
