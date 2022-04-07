@@ -1,22 +1,24 @@
 <form [formGroup]="loginForm" class="form sign-in">
-    <label *ngIf="cargando" style="margin-top: 15vh;">
+    <div class="test" *ngIf="cargando" style="margin-top: 15vh;">
       <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
-        <span class="sr-only">Loading...</span>
       </div>
-    </label>
+    </div>
     <div *ngIf="!cargando">
       <h2>Welcome to Play-Room</h2>
-      <!-- <label> -->
-        <mat-form-field appearance="fill">
-          <input matInput formControlName="username" placeholder="Email" required />
+      <div class="test">
+        <mat-form-field>
+          <!-- <mat-label [ngStyle]="{color: isNotValidField('username') && f['username'].dirty ? 'red' : 'black'}" >Email</mat-label> -->
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="username" required />
           <mat-error *ngIf="isNotValidField('username')">
             {{getErrorMessage('username')}}
           </mat-error>
         </mat-form-field>
-      <!-- </label> -->
-      <label>
+      </div>
+      <div class="test">
         <mat-form-field>
-          <input [type]="hide ? 'text' : 'password'" matInput formControlName="password" placeholder="Password"
+          <mat-label>Password</mat-label>
+          <input [type]="hide ? 'text' : 'password'" matInput formControlName="password"
             required />
           <svg (click)="hide = !hide" matSuffix xmlns="http://www.w3.org/2000/svg" width="16" height="16"
             fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
@@ -30,7 +32,7 @@
           </mat-error>
           <mat-hint *ngIf="error" style="color: red;">{{errorMsj}}</mat-hint>
         </mat-form-field>
-      </label>
+      </div>
       <button [disabled]="loginForm.invalid" (click)="onLogin()" type="button" class="submit">Sign In</button>
       <br>
       <button type="button" class="fb-btn" (click)="completarLogin()"><span>Completar Login</span></button>

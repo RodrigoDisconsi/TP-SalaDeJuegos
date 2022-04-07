@@ -4,7 +4,7 @@
     padding: 0;
   }
   
-  body {
+  .cont {
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     background: #ededed;
   }
@@ -216,7 +216,7 @@
     text-align: center;
   }
   
-  label{
+  .test{
     display: block;
     width: $inputW;
     margin: 25px auto 0;
@@ -224,12 +224,12 @@
   }
   
   input {
-    display: block;
     width: 100%;
     margin-top: 5px;
     padding-bottom: 5px;
     font-size: 16px;
     text-align: center;
+    border-color: black;
   }
 
   .submit {
