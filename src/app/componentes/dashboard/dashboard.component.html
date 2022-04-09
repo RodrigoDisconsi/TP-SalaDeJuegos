@@ -1,13 +1,60 @@
-<nav class="site-header sticky-top py-1">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2" [routerLink]="['/']" aria-label="Game Room">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24" focusable="false"><title>Game Room</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
-      </a>
-      <a *ngIf="isLoggedIn$ | async" class="py-2 d-none d-md-inline-block" [routerLink]="['/Juegos']">Games</a>
-      <a *ngIf="isLoggedIn$ | async" class="py-2 d-none d-md-inline-block" [routerLink]="['/Listado']">Top</a>
-      <a *ngIf="isLoggedIn$ | async" class="py-2 d-none d-md-inline-block" [routerLink]="['/Jugadores']">Players</a>
-      <a *ngIf="!(isLoggedIn$ | async)" class="py-2 d-none d-md-inline-block" [routerLink]="['/Login']">Login</a>
-      <a *ngIf="isLoggedIn$ | async" class="py-2 d-none d-md-inline-block" (click)="onLogout()">Log Out</a>
-    </div>
-  </nav>
-  
+    <nav class="site-header sticky-top py-1">
+        <div class="container">
+            <div class="row">
+              <div class="col-11">
+                <button mat-icon-button *ngIf="sidenav.mode === 'over' && !(isLoggedIn$ | async)" (click)="sidenav.toggle()">
+                    <mat-icon *ngIf="!sidenav.opened">
+                        menu
+                    </mat-icon>
+                    <mat-icon *ngIf="sidenav.opened">
+                        close
+                    </mat-icon>
+                </button>
+              </div>
+              <div class="col">
+                <a *ngIf="!(isLoggedIn$ | async)" class="py-2 d-none d-md-inline-block" [routerLink]="['/Login']">Login</a>
+                <a *ngIf="isLoggedIn$ | async" class="py-2 d-none d-md-inline-block" (click)="onLogout()">Log Out</a>
+              </div>
+            </div>
+          </div>
+      </nav>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+            <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
+
+            <h4 class="name">John Smith</h4>
+            <p class="designation">Software Engineer</p>
+
+            <mat-divider></mat-divider>
+            <button mat-button class="menu-button">
+                <mat-icon class="rotate">home</mat-icon>
+                <span class="rotate">Home</span>
+            </button>
+            <button mat-button class="menu-button">
+                <mat-icon>person</mat-icon>
+                <span>Profile</span>
+            </button>
+            <button mat-button class="menu-button">
+                <mat-icon>info</mat-icon>
+                <span>About</span>
+            </button>
+    
+            <mat-divider></mat-divider>
+    
+            <button mat-button class="menu-button">
+                <mat-icon>help</mat-icon>
+                <span>Help</span>
+            </button>
+    
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <section class="showcase">
+                <div class="video-container">
+                    <video id="video-background" width="100%" height="100%" src="../assets/videos/Game.mp4" autoplay loop></video>
+                </div>
+                <div class="content">
+                    <router-outlet></router-outlet>
+                </div>
+            </section>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
