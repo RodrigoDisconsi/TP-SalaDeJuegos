@@ -11,7 +11,6 @@ import { AuthService } from '../../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   public cargando: boolean = false;
-  public firstTime = false;
   public hide: boolean = false;
   public usuario: string = "";
   public error: boolean = false;
@@ -68,7 +67,7 @@ export class LoginComponent implements OnInit {
   }
 
   isNotValidField(field: string): boolean {
-    return (this.f[field].touched || this.f[field].dirty == true)
+    return (this.f[field].touched || this.f[field].dirty)
       && !this.f[field].valid;
   }
 

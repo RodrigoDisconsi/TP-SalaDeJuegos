@@ -1,4 +1,4 @@
-
+<!-- 
     <form [formGroup]="regisForm" class="form">
         <div class="test" *ngIf="cargando" style="margin-top: 15vh;">
             <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
@@ -56,4 +56,33 @@
         <button [disabled]="regisForm.invalid" (click)="onRegistrar()" type="button" class="submit">Sign Up</button>
         <button type="button" class="fb-btn">Join with <span>Google</span></button>
     </div>
-    </form>
+    </form> -->
+
+    <div class="center-wrap">
+        <div class="section text-center">
+          <h4 class="mb-4 pb-3">Sign Up</h4>
+          <form [formGroup]="regisForm">
+              <div class="form-group">
+                <input type="text" formControlName="username" name="logname" class="form-control form-style" [ngClass]="{'is-invalid': isNotValidField('username'), 'is-valid': !isNotValidField('username') && this.f['username'].touched}" placeholder="Your Full Name" autocomplete="off">
+                <div class="invalid-feedback" style="font-size: small;">
+                  {{getErrorMessage('username')}}
+               </div>
+              </div>	
+              <div class="form-group mt-2">
+                <input type="email" formControlName="email" name="logemail" class="form-control form-style" [ngClass]="{'is-invalid': isNotValidField('email'), 'is-valid': !isNotValidField('email') && this.f['email'].touched}" placeholder="Your Email" autocomplete="off">
+                <i class="input-icon uil uil-at"></i>
+                <div class="invalid-feedback" style="font-size: small;">
+                  {{getErrorMessage('email')}}
+               </div>
+              </div>	
+              <div class="form-group mt-2">
+                <input type="password" formControlName="password" name="logpass" class="form-control form-style" [ngClass]="{'is-invalid': isNotValidField('password'), 'is-valid': !isNotValidField('password') && this.f['password'].touched}" placeholder="Your Password" autocomplete="off">
+                <i class="input-icon uil uil-lock-alt"></i>
+                <div class="invalid-feedback" style="font-size: small;">
+                  {{getErrorMessage('password')}}
+               </div>
+              </div>
+              <button [disabled]="regisForm.invalid" (click)="onRegistrar()" type="button" class="btn mt-4">Sign Up</button>
+          </form>
+        </div>
+    </div>

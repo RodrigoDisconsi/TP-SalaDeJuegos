@@ -1,8 +1,8 @@
     <nav class="site-header sticky-top py-1">
         <div class="container">
             <div class="row">
-              <div class="col-11">
-                <button mat-icon-button *ngIf="sidenav.mode === 'over' && !(isLoggedIn$ | async)" (click)="sidenav.toggle()">
+              <div class="col">
+                <button mat-icon-button *ngIf="sidenav.mode === 'over' && (isLoggedIn$ | async)" (click)="sidenav.toggle()">
                     <mat-icon *ngIf="!sidenav.opened">
                         menu
                     </mat-icon>
@@ -10,10 +10,6 @@
                         close
                     </mat-icon>
                 </button>
-              </div>
-              <div class="col">
-                <a *ngIf="!(isLoggedIn$ | async)" class="py-2 d-none d-md-inline-block" [routerLink]="['/Login']">Login</a>
-                <a *ngIf="isLoggedIn$ | async" class="py-2 d-none d-md-inline-block" (click)="onLogout()">Log Out</a>
               </div>
             </div>
           </div>

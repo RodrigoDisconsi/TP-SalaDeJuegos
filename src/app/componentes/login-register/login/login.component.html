@@ -43,19 +43,21 @@
     <div class="center-wrap">
       <div class="section text-center">
         <h4 class="mb-4 pb-3">Log In</h4>
-        <form>
+        <form [formGroup]="loginForm">
           <div class="form-group">
-            <!-- <input placeholder="Your email" type="text" class="form-control form-style is-valid" id="validationSuccess" required> -->
-            <input placeholder="Your email" type="text" class="form-control form-style is-invalid" id="validationSuccess" required>
+            <input formControlName="username" placeholder="Your email" type="text" class="form-control form-style" [ngClass]="{'is-invalid': isNotValidField('username'), 'is-valid': !isNotValidField('username') && this.f['username'].touched}" id="validationSuccess" required>
             <div class="invalid-feedback" style="font-size: small;">
-              This is an error state form validation message!
+              {{getErrorMessage('username')}}
            </div>
           </div>	
           <div class="form-group mt-2">
-            <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+            <input formControlName="password" type="password" name="logpass" class="form-control form-style" placeholder="Your Password" [ngClass]="{'is-invalid': isNotValidField('password'), 'is-valid': !isNotValidField('password') && this.f['password'].touched}" id="logpass" autocomplete="off">
+            <div class="invalid-feedback" style="font-size: small;">
+              {{getErrorMessage('password')}}
+           </div>
           </div>
-          <a href="#" class="btn mt-4">submit</a>
-          <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+          <button [disabled]="loginForm.invalid" (click)="onLogin()" class="btn mt-4">Sign In</button>
+          <p class="mb-0 mt-4 text-center"><a (click)="completarLogin()" class="link">Autocomplete</a></p>
         </form>
           </div>
         </div>

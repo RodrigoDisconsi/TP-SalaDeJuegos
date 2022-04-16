@@ -14,7 +14,7 @@ export class AuthService {
   public loggedIn = new BehaviorSubject<boolean>(false); 
 
   
-  constructor(private fauth:AngularFireAuth, private afs: AngularFirestore) { 
+  constructor(private fauth:AngularFireAuth) { 
     
   }
   
