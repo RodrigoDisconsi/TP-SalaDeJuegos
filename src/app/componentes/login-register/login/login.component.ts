@@ -39,8 +39,9 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.loginForm.value.username, this.loginForm.value.password).then((user) => {
       if (user) {
         this.auth.user = user.user;
+        this.auth.username.next(user.user.displayName);
         this.auth.loggedIn.next(true);
-        localStorage.setItem('nickname', this.auth.user.displayName);
+        // localStorage.setItem('nickname', this.auth.user.displayName);
         this.router.navigate(['']);
         this.cargando = false;
       }

@@ -11,25 +11,18 @@ import { AuthService } from '../../services/auth.service';
 export class DashboardComponent{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  isLoggedIn$: Observable<boolean>;                  // {1}
+  isLoggedIn$: Observable<boolean>;
+  username$: Observable<string>;
 
   constructor(private authService: AuthService) { 
     this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.username$ = this.authService.username;
   }
-
-  // ngOnInit() {
-  //    // {2}
-  // }
-
-//  checkSidenav(sidenav:any){
-//    if(sidenav._animationState == "open"){
-//      sidenav.toggle();
-//    }
-//  }
 
  onLogout(){
   this.authService.logout().then(()=>{
     this.authService.loggedIn.next(false);
+    this.sidenav.toggle();
   });
  }
 }

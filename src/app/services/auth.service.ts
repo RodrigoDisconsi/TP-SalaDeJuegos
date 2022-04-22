@@ -11,6 +11,7 @@ import firebase from 'firebase/compat/app';
 export class AuthService {
 
   public user:any;
+  public username = new BehaviorSubject<string>("");
   public loggedIn = new BehaviorSubject<boolean>(false); 
 
   
