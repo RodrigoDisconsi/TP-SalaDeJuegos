@@ -56,6 +56,10 @@
               {{getErrorMessage('password')}}
            </div>
           </div>
+          <div *ngIf="error" class="is-invalid mt-4"></div>
+          <div class="invalid-feedback" style="font-size: medium;">
+            {{(errorMsj | async)}}
+         </div>
           <button [disabled]="loginForm.invalid" (click)="onLogin()" class="btn mt-4">Sign In</button>
           <p class="mb-0 mt-4 text-center"><a (click)="completarLogin()" class="link">Autocomplete</a></p>
         </form>

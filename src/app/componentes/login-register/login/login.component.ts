@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   public hide: boolean = false;
   public usuario: string = "";
   public error: boolean = false;
-  public errorMsj:string = "";
+  public errorMsj = new BehaviorSubject<string>("");
   public loginForm = this.formBuilder.group({
     username: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required,  Validators.minLength(6)]],
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
         this.cargando = false;
       }
     }).catch(e => {
-      this.errorMsj = e.message;
+      this.errorMsj.next(e.message);
       this.error = true;
       this.cargando = false;
       console.info("ERROR ->", e);
