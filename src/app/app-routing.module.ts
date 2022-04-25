@@ -6,7 +6,7 @@ import { LoginRegisterComponent } from './componentes/login-register/login-regis
 import { LoginActivateGuard } from './guard/login-activate.guard';
 
 const routes: Routes = [
-  {path: '' , component: HomeComponent, canActivate:[LoginActivateGuard]},
+  {path: '' , component: HomeComponent},
   {path: 'Login' , component: LoginRegisterComponent},
   {path: 'AboutMe' , component: AboutComponent, canActivate:[LoginActivateGuard]}
 ];
