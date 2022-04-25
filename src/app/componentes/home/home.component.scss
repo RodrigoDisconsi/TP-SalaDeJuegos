@@ -1,28 +1,3 @@
-.btn-primary:hover,
-.btn-primary:focus {
-    background-color: #108d6f;
-    border-color: #108d6f;
-    box-shadow: none;
-    outline: none;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #007b5e;
-    border-color: #007b5e;
-}
-
-section {
-    padding: 60px 0;
-}
-
-section .section-title {
-    text-align: center;
-    color: #007b5e;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-}
-
 .image-flip:hover .backside,
 .image-flip.hover .backside {
     -webkit-transform: rotateY(0deg);
@@ -58,7 +33,7 @@ section .section-title {
     position: relative;
     -webkit-transform: rotateY(0deg);
     -ms-transform: rotateY(0deg);
-    z-index: 2;
+    // z-index: 2;
     margin-bottom: 30px;
 }
 
@@ -98,25 +73,30 @@ section .section-title {
     background-color: transparent;
 }
 
-.backside .card a {
-    font-size: 18px;
-    color: #007b5e !important;
-}
-
 .frontside .card .card-title,
 .backside .card .card-title {
-    color: #007b5e !important;
+    color: #d3d978;
 }
 
 .frontside .card .card-body img {
-    width: 120px;
-    height: 120px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
 }
 
+// .test{
+//   overflow: hidden;
+//   background-size: cover;
+//   width: 100%;
+//   background-color: transparent;
+// }
+
+// .test:hover{
+//     cursor: pointer;
+// }
+
 .test{
-  overflow: hidden;
-  background-size: cover;
-  width: 100%;
-  background-color: transparent;
+    width: 80%;
+    align-self: center;
+    margin-top: 12vh;
 }
