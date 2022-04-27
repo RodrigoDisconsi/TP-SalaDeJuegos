@@ -23,6 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { AboutComponent } from './componentes/about/about.component';
+import { SnakeComponent } from './componentes/games/snake/snake.component';
+import { TriviaComponent } from './componentes/games/trivia/trivia.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AboutComponent } from './componentes/about/about.component';
     LoginRegisterComponent,
     DashboardComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    SnakeComponent,
+    TriviaComponent
   ],
   imports: [
     BrowserModule,
