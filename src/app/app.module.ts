@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AboutComponent } from './componentes/about/about.component';
 import { SnakeComponent } from './componentes/games/snake/snake.component';
 import { TriviaComponent } from './componentes/games/trivia/trivia.component';
+import { HigherorlowerComponent } from './componentes/games/higherorlower/higherorlower.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TriviaComponent } from './componentes/games/trivia/trivia.component';
     HomeComponent,
     AboutComponent,
     SnakeComponent,
-    TriviaComponent
+    TriviaComponent,
+    HigherorlowerComponent
   ],
   imports: [
     BrowserModule,
