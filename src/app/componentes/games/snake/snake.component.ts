@@ -26,7 +26,7 @@ export class SnakeComponent implements OnInit {
   public showMenuChecker = false;
   public gameStarted = false;
   public newBestScore = false;
-  // public best_score = this.bestScoreService.retrieve();
+  public best_score = this.bestScoreService.retrieve();
 
   private snake = {
     direction: CONTROLS.LEFT,
@@ -220,27 +220,27 @@ export class SnakeComponent implements OnInit {
     this.gameStarted = false;
     let me = this;
 
-    // if (this.score > this.best_score) {
-    //   this.bestScoreService.store(this.score);
-    //   this.best_score = this.score;
-    //   this.newBestScore = true;
-    // }
+    if (this.score > this.best_score) {
+      this.bestScoreService.store(this.score);
+      this.best_score = this.score;
+      this.newBestScore = true;
+    }
     this.setBoard();
 
     setTimeout(() => {
       me.isGameOver = false;
     }, 500);
     
-    // this.juegoService.setResult({
-    //   juego: 'Snake',
-    //   puntaje: this.score
-    // })
-    // .then(result => {
-    //   console.log(result);
-    // })
-    // .catch(err => {
-    //   console.log('Error ->', err);
-    // });
+    this.juegoService.setResult({
+      juego: 'Snake',
+      puntaje: this.score
+    })
+    .then(result => {
+      console.log(result);
+    })
+    .catch(err => {
+      console.log('Error ->', err);
+    });
   }
 
   randomNumber(): any {
