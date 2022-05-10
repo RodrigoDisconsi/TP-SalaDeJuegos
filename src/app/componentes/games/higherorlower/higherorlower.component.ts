@@ -6,20 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./higherorlower.component.scss']
 })
 export class HigherorlowerComponent implements OnInit {
-  suits = ['Hearts', 'Spades', 'Diamonds', 'Clubs'];
-  suitType = 0;
   cardAmount = 30;
   
   constructor() { }
 
   ngOnInit(): void {
     this.initCards();
-  }
-
-
-  randomize(){
-    this.suitType = Math.floor(Math.random() * 4);
-    let suitResult = this.suits[this.suitType];
   }
 
   initCards(){
@@ -32,14 +24,17 @@ export class HigherorlowerComponent implements OnInit {
     }
   }
 
-  // $('.card').click(function(){
-  //   if ($(this).hasClass('down')) {
-  //     $(this).removeClass('down');
-  //     $(this).addClass('opened');
-  //   }
-  //   else if ($(this).hasClass('opened')) {
-  //     $(this).addClass('is-removed');
-  //   }
-  //   randomize();
-  // });
+  click(e:any){
+    console.info(e);
+    var test = e.target.classList;
+    if(test.contains("down")){
+      test.remove("down");
+      test.add("opened");
+    }
+    else if(test.contains("opened")){
+      test.add("is-removed");
+      // test.add("test");
+      test.remove("opened");
+    }
+  }
 }
