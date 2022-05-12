@@ -1,3 +1,20 @@
+$color-orange: #FFB300;
+
+//Change the size of the button (padding around the text)
+$button-padding-vertical: .7em;
+$button-padding-horizontal: 1em;
+
+$button-text-font: 'Tahoma';
+$button-text-color: #fff;
+$button-text-shadow: 0 1px 3px rgba( #000, .1 );
+
+//Amount to shift the button when active
+$button-active-offset: .05em;
+$button-animation-time: .1s;
+
+$button-border-radius: .15em .15em .125em .125em;
+
+
 .vara {
     height: 70px;
     width: 15px;
@@ -30,3 +47,60 @@ img {
 .cursor{
     cursor: pointer;
 }
+
+@mixin button-effects( $color ) {
+    $darker: darken( $color, 5% );
+    $darkest: darken( $color, 10% );
+    
+    background: $color;
+    box-shadow: inset 0 -.12em $darker;
+    
+    &:active {
+      background: $darker;
+      box-shadow: inset 0 .05em $darkest;
+    }
+  }
+  
+  .container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    
+    &__text {
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  }
+  
+  .button {
+    border: 0;
+    border-radius: $button-border-radius;
+    color: $button-text-color;
+    cursor: pointer;
+    font-family: $button-text-font;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: $button-padding-vertical $button-padding-horizontal;
+    text-shadow: $button-text-shadow;
+    transition: background $button-animation-time, padding $button-animation-time, margin $button-animation-time, box-shadow $button-animation-time, color $button-animation-time, text-shadow $button-animation-time;
+    &--orange {
+      @include button-effects( $color-orange );
+    }
+    
+    &:active {
+      color: rgba( $button-text-color, .9 );
+      margin-top: $button-active-offset;
+      padding-bottom: $button-padding-vertical - $button-active-offset;
+      text-shadow: none;
+    }
+    
+    &:focus {
+      outline: 0;
+    }
+  }
+  
+  .large-font {
+    font-size: 36px;
+  }
+  

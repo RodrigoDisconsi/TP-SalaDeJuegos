@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './componentes/about/about.component';
+import { HangmanComponent } from './componentes/games/hangman/hangman.component';
 import { HigherorlowerComponent } from './componentes/games/higherorlower/higherorlower.component';
 import { SnakeComponent } from './componentes/games/snake/snake.component';
 import { TriviaComponent } from './componentes/games/trivia/trivia.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'Snake' , component: SnakeComponent, canActivate:[LoginActivateGuard]},
   {path: 'HigherOrLower' , component: HigherorlowerComponent, canActivate:[LoginActivateGuard]},
   {path: 'Trivia' , component: TriviaComponent},
+  {path: 'HangMan' , component: HangmanComponent},
   {path: 'AboutMe' , component: AboutComponent, canActivate:[LoginActivateGuard]}
 ];
 

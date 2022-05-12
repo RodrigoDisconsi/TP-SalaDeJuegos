@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent{
+export class DashboardComponent implements AfterViewInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isLoggedIn$: Observable<boolean>;
@@ -17,6 +17,9 @@ export class DashboardComponent{
   constructor(private authService: AuthService) { 
     this.isLoggedIn$ = this.authService.isLoggedIn;
     this.username$ = this.authService.username;
+  }
+
+  ngAfterViewInit(): void {
   }
 
  onLogout(){

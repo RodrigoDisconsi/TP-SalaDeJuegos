@@ -1,13 +1,21 @@
-<div class="body">
-    <div class="container">
+
+<div style="position: absolute; top: 1; right: 0;">
+    <h2>Correct answer: {{respuestasCorrectas}}</h2>
+</div>
+<div class="container">
         <div class="row text-center">
-            <div class="col-md-12 mt-2">
+            <div class="col-md-12 mt-5">
                 <div class="vara"></div>
-                <img #ruleta src="../../../../assets/imagenes/ruleta.png" class="img-fluid cursor" (click)="girar()">
+                <img #ruleta src="../../../../assets/imagenes/ruleta.png" class="img-fluid cursor">
             </div>
         </div>
-    </div>
-    <div>
-        <audio #audio src="../../../../assets/audio/sonido_ruleta.mp3"></audio>
-    </div>
+        <div class="container large-font mt-5">
+            <button class="button button--orange" type="button" (click)="girar()"> 
+              Play
+            </button>
+        </div>
 </div>
+<div>
+    <audio #audio src="../../../../assets/audio/sonido_ruleta.mp3"></audio>
+</div>
+    

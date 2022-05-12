@@ -26,6 +26,8 @@ import { AboutComponent } from './componentes/about/about.component';
 import { SnakeComponent } from './componentes/games/snake/snake.component';
 import { TriviaComponent } from './componentes/games/trivia/trivia.component';
 import { HigherorlowerComponent } from './componentes/games/higherorlower/higherorlower.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HangmanComponent } from './componentes/games/hangman/hangman.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { HigherorlowerComponent } from './componentes/games/higherorlower/higher
     AboutComponent,
     SnakeComponent,
     TriviaComponent,
-    HigherorlowerComponent
+    HigherorlowerComponent,
+    HangmanComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { HigherorlowerComponent } from './componentes/games/higherorlower/higher
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
