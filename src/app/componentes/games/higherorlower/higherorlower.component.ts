@@ -29,6 +29,7 @@ export class HigherorlowerComponent implements OnInit {
     var test = e.target.classList;
     if(test.contains("down")){
       test.remove("down");
+      test.remove("back");
       test.add("opened");
     }
     else if(test.contains("opened")){
