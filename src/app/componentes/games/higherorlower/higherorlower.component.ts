@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { elementAt } from 'rxjs';
+import Swal from 'sweetalert2';
+import { forEachChild } from 'typescript';
 
 @Component({
   selector: 'app-higherorlower',
@@ -6,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./higherorlower.component.scss']
 })
 export class HigherorlowerComponent implements OnInit {
+  @ViewChild('deck')
+  deck!:ElementRef;
+
   cardAmount = 30;
+  testtt = false;
+  indice:number = 0;
+  respuestasCorrectas:number = 0;
+  currentCard:String = " Press card to start. . . ";
+  start:boolean = false;
+  currentElementCard:number = 9;
   
   constructor() { }
 
@@ -24,18 +36,77 @@ export class HigherorlowerComponent implements OnInit {
     }
   }
 
-  click(e:any){
-    console.info(e);
-    var test = e.target.classList;
-    if(test.contains("down")){
-      test.remove("down");
-      test.remove("back");
-      test.add("opened");
+  higherOrLower(hOrL:String){
+    let e = this.deck.nativeElement.childNodes[this.currentElementCard];
+    this.start = false;
+    this.click(e, hOrL);
+    this.start = true;
+  }
+
+  click(e:any, hOrL:String = ""){
+    let classListOfCard = e.classList;
+    if(classListOfCard.contains("down") && !this.start){
+      let random = Math.round(Math.random() * 12);
+      if(hOrL != ""){
+        let cardNum = parseInt(this.currentCard.toString());
+        if((cardNum < random && hOrL == "H") || (cardNum > random && hOrL == "L")){
+          this.respuestasCorrectas++;
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Good Job',
+            showConfirmButton: false,
+            allowOutsideClick:false,
+            timer: 1000
+          });
+        }
+        else{
+          this.respuestasCorrectas = 0;
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Upsss',
+            showConfirmButton: false,
+            allowOutsideClick:false,
+            timer: 1000
+          });
+        }
+      }
+      this.currentCard = random.toString();
+      e.style.backgroundImage = `url('../../../../assets/imagenes/carta${random}.png')`
+      e.style.zIndex = this.indice;
+      random = random == 0 ? 1 : random;
+      classListOfCard.remove("down");
+      classListOfCard.remove("back");
+      classListOfCard.add("front");
+      classListOfCard.add("opened");
+      this.start = true;
     }
-    else if(test.contains("opened")){
-      test.add("is-removed");
-      // test.add("test");
-      test.remove("opened");
+    else if(classListOfCard.contains("opened") && hOrL == ""){
+      this.indice++;
+      this.currentElementCard--;
+      classListOfCard.add("is-removed");
+      classListOfCard.remove("opened");
+      if(this.currentElementCard == -1){
+        setTimeout(() => {
+          this.reiniciar();
+        }, 50);  
+      }
+    }
+  }
+
+  reiniciar(){
+    this.indice = 0;
+    this.start = false;
+    this.currentCard = "Press card to start. . .";
+    this.respuestasCorrectas = 0;
+    this.currentElementCard = 9;
+    for (let index = 0; index <= this.currentElementCard; index++) {
+      let element = this.deck.nativeElement.childNodes[index];
+      element.classList.remove("is-removed");
+      element.classList.add("down");
+      element.classList.add("back");
+      element.style.zIndex = 0;
     }
   }
 }

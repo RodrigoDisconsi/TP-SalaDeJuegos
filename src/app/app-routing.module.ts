@@ -14,8 +14,8 @@ const routes: Routes = [
   {path: 'Login' , component: LoginRegisterComponent},
   {path: 'Snake' , component: SnakeComponent, canActivate:[LoginActivateGuard]},
   {path: 'HigherOrLower' , component: HigherorlowerComponent, canActivate:[LoginActivateGuard]},
-  {path: 'Trivia' , component: TriviaComponent},
-  {path: 'HangMan' , component: HangmanComponent},
+  {path: 'Trivia' , component: TriviaComponent, canActivate:[LoginActivateGuard]},
+  {path: 'HangMan' , component: HangmanComponent, canActivate:[LoginActivateGuard]},
   {path: 'AboutMe' , component: AboutComponent, canActivate:[LoginActivateGuard]}
 ];
 

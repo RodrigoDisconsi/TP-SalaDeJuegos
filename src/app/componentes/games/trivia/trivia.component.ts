@@ -44,7 +44,7 @@ export class TriviaComponent {
       cancelButtonColor: '#7066e0',
       reverseButtons: false,
       allowOutsideClick: false,
-    }).then((result) => {
+    }).then((result:any) => {
       if ((result.isConfirmed && question.correct_answer == "True") || 
       (result.dismiss === Swal.DismissReason.cancel && question.correct_answer == "False")) {
           Swal.fire(

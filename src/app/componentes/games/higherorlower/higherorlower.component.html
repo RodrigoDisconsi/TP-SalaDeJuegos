@@ -1,12 +1,26 @@
-<div class="cards">
-	<div class="card down back" (click)="click($event)"></div>
-	<div class="card down back" (click)="click($event)"></div>
-	<div class="card down back" (click)="click($event)"></div>
-	<div class="card down back" (click)="click($event)"></div>
-	<div class="card down back" (click)="click($event)"></div>
-	<div class="card down back" (click)="click($event)"></div>
-	<div class="card down back" (click)="click($event)"></div>
-	<div class="card down back" (click)="click($event)"></div>
-	<div class="card down back" (click)="click($event)"></div>
-	<div class="card down back" (click)="click($event)"></div>  
+<div style="position: absolute; top: 1; right: 0;">
+    <h2>Correct answer: {{respuestasCorrectas}}</h2>
+</div>
+<div style="position: absolute; top: 1; left: 0;">
+    <h2>Current card: {{currentCard}}</h2>
+</div>
+<div *ngIf="start">
+	<div style="position: absolute; top: 30%; left: 25%;">
+		<span class="arrowbtn arrowbtn-up" (click)="higherOrLower('H')"></span>
+	</div>
+	<div style="position: absolute; top: 50%; right: 25%;">
+		<span class="arrowbtn arrowbtn-down" (click)="higherOrLower('L')"></span>
+	</div>
+</div>
+<div #deck class="cards">
+	<div class="card down back" (click)="click($event.target)"></div>
+	<div class="card down back" (click)="click($event.target)"></div>
+	<div class="card down back" (click)="click($event.target)"></div>
+	<div class="card down back" (click)="click($event.target)"></div>
+	<div class="card down back" (click)="click($event.target)"></div>
+	<div class="card down back" (click)="click($event.target)"></div>
+	<div class="card down back" (click)="click($event.target)"></div>
+	<div class="card down back" (click)="click($event.target)"></div>
+	<div class="card down back" (click)="click($event.target)"></div>
+	<div class="card down back" (click)="click($event.target)"></div>  
 </div>

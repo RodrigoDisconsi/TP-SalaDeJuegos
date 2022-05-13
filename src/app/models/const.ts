@@ -1,4 +1,4 @@
-export const BOARD_SIZE = 18;
+export const BOARD_SIZE = 17;
 
 export const CONTROLS = {
   LEFT: 37,
