@@ -7,6 +7,7 @@ import { SnakeComponent } from './componentes/games/snake/snake.component';
 import { TriviaComponent } from './componentes/games/trivia/trivia.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { LoginRegisterComponent } from './componentes/login-register/login-register.component';
+import { TableResultsComponent } from './componentes/table-results/table-results.component';
 import { LoginActivateGuard } from './guard/login-activate.guard';
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'HigherOrLower' , component: HigherorlowerComponent, canActivate:[LoginActivateGuard]},
   {path: 'Trivia' , component: TriviaComponent, canActivate:[LoginActivateGuard]},
   {path: 'HangMan' , component: HangmanComponent, canActivate:[LoginActivateGuard]},
-  {path: 'AboutMe' , component: AboutComponent, canActivate:[LoginActivateGuard]}
+  {path: 'AboutMe' , component: AboutComponent, canActivate:[LoginActivateGuard]},
+  {path: 'Test' , component: TableResultsComponent}
 ];
 
 @NgModule({

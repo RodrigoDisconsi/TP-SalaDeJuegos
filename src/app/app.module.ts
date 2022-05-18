@@ -28,6 +28,7 @@ import { TriviaComponent } from './componentes/games/trivia/trivia.component';
 import { HigherorlowerComponent } from './componentes/games/higherorlower/higherorlower.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HangmanComponent } from './componentes/games/hangman/hangman.component';
+import { TableResultsComponent } from './componentes/table-results/table-results.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HangmanComponent } from './componentes/games/hangman/hangman.component'
     SnakeComponent,
     TriviaComponent,
     HigherorlowerComponent,
-    HangmanComponent
+    HangmanComponent,
+    TableResultsComponent
   ],
   imports: [
     BrowserModule,

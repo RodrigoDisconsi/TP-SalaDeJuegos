@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements AfterViewInit{
+export class DashboardComponent{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isLoggedIn$: Observable<boolean>;
@@ -19,8 +19,6 @@ export class DashboardComponent implements AfterViewInit{
     this.username$ = this.authService.username;
   }
 
-  ngAfterViewInit(): void {
-  }
 
  onLogout(){
   this.authService.logout().then(()=>{

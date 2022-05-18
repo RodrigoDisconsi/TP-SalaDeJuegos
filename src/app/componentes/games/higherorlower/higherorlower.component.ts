@@ -72,7 +72,7 @@ export class HigherorlowerComponent implements OnInit {
           });
         }
       }
-      this.currentCard = random.toString();
+      this.currentCard = "Current card: " + random.toString();
       e.style.backgroundImage = `url('../../../../assets/imagenes/carta${random}.png')`
       e.style.zIndex = this.indice;
       random = random == 0 ? 1 : random;
@@ -99,6 +99,8 @@ export class HigherorlowerComponent implements OnInit {
     this.indice = 0;
     this.start = false;
     this.currentCard = "Press card to start. . .";
+    if(this.respuestasCorrectas > 0 )
+      this.currentCard = "Cotinue..."
     this.respuestasCorrectas = 0;
     this.currentElementCard = 9;
     for (let index = 0; index <= this.currentElementCard; index++) {
