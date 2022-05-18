@@ -1,5 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Guid } from 'guid-typescript';
 import { elementAt } from 'rxjs';
+import { ResultsInterface } from 'src/app/models/interface/results-interface';
+import { AuthService } from 'src/app/services/auth.service';
+import { GameService } from 'src/app/services/game.service';
 import Swal from 'sweetalert2';
 import { forEachChild } from 'typescript';
 
@@ -13,14 +17,15 @@ export class HigherorlowerComponent implements OnInit {
   deck!:ElementRef;
 
   cardAmount = 30;
-  testtt = false;
   indice:number = 0;
   respuestasCorrectas:number = 0;
-  currentCard:String = " Press card to start. . . ";
+  currentCard:String = "";
+  text:String = " Press card to start. . . ";
   start:boolean = false;
   currentElementCard:number = 9;
+  results:ResultsInterface = {};
   
-  constructor() { }
+  constructor(private afs:GameService, private auth:AuthService) { }
 
   ngOnInit(): void {
     this.initCards();
@@ -61,6 +66,16 @@ export class HigherorlowerComponent implements OnInit {
           });
         }
         else{
+          if(this.respuestasCorrectas > 0){
+            this.results.id = Guid.create().toString();
+            this.results.game = "HoL";
+            this.results.score = this.respuestasCorrectas.toString();
+            this.results.user = this.auth.user.displayName;
+            
+            this.afs.setObj("results", this.results).then(x =>{
+              
+            });
+          }
           this.respuestasCorrectas = 0;
           Swal.fire({
             position: 'top-end',
@@ -72,7 +87,8 @@ export class HigherorlowerComponent implements OnInit {
           });
         }
       }
-      this.currentCard = "Current card: " + random.toString();
+      this.text = "Current card: ";
+      this.currentCard = random.toString();
       e.style.backgroundImage = `url('../../../../assets/imagenes/carta${random}.png')`
       e.style.zIndex = this.indice;
       random = random == 0 ? 1 : random;
@@ -98,9 +114,11 @@ export class HigherorlowerComponent implements OnInit {
   reiniciar(){
     this.indice = 0;
     this.start = false;
-    this.currentCard = "Press card to start. . .";
-    if(this.respuestasCorrectas > 0 )
-      this.currentCard = "Cotinue..."
+    this.text = "Press card to start. . .";
+    if(this.respuestasCorrectas > 0 ){
+      this.text = "Cotinue...";
+      this.currentCard = "";
+    }
     this.respuestasCorrectas = 0;
     this.currentElementCard = 9;
     for (let index = 0; index <= this.currentElementCard; index++) {

@@ -97,17 +97,15 @@ $btn-hover-border-color:  white;
   }
 }
 
-.count{
-  padding: 14px 16px;
-  line-height: 40px;
-  font-weight: 600;
-  font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased;
-  border-radius: 4px;
-  display: inline-block;
-  background: rgba(255,255,255,0.1);
-  &.glow{
-    text-shadow: (0 0 4px #ffffff);
-  }
+.score{
+  position: absolute;
+  top: 1;
+  right: 0;
 }
-  
+
+.text{
+  position: absolute;
+  top: 1;
+  left: 0;
+  margin-left: 1vh;
+}

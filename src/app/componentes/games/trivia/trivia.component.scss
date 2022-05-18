@@ -27,26 +27,10 @@ $button-border-radius: .15em .15em .125em .125em;
     border-top: 5px solid #000;
     z-index: 1000;
 }
-
 img {
-    z-index: 100;
-    transition: all 5s;
+  transition: all 5s;
 }
 
-//26 esta en el 0
-
-#premio {
-    color: white;
-    position: absolute;
-    font-weight: bold;
-    font-size: 25px;
-    padding-top: 20px;
-    padding: 20px;
-}
-
-.cursor{
-    cursor: pointer;
-}
 
 @mixin button-effects( $color ) {
     $darker: darken( $color, 5% );
@@ -61,20 +45,9 @@ img {
     }
   }
   
-  .container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    
-    &__text {
-      font-size: 12px;
-      margin-top: 10px;
-    }
-  }
-  
   .button {
     border: 0;
+    margin-top: 10vh;
     border-radius: $button-border-radius;
     color: $button-text-color;
     cursor: pointer;
@@ -104,3 +77,15 @@ img {
     font-size: 36px;
   }
   
+  .tabla{
+    position: absolute;
+    right: 5%;
+    top: 25%;
+  }
+
+  .score{
+    position: absolute; 
+    top: 1;
+    left: 0;
+    margin-left: 1vh;
+  }

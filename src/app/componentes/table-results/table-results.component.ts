@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ResultsInterface } from 'src/app/models/interface/results-interface';
 
 @Component({
   selector: 'app-table-results',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table-results.component.scss']
 })
 export class TableResultsComponent implements OnInit {
+  
+  @Input() listResult!:ResultsInterface[];
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  
 
 }

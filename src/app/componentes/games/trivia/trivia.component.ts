@@ -1,8 +1,12 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { EnumCategory } from 'src/app/models/EnumCategory';
 import { TriviaService } from 'src/app/services/trivia.service';
 import { TriviaModel } from 'src/app/models/games/trivia';
+import { GameService } from 'src/app/services/game.service';
+import { ResultsInterface } from 'src/app/models/interface/results-interface';
+import { AuthService } from 'src/app/services/auth.service';
+import { Guid } from 'guid-typescript';
 
 
 @Component({
@@ -10,15 +14,23 @@ import { TriviaModel } from 'src/app/models/games/trivia';
   templateUrl: './trivia.component.html',
   styleUrls: ['./trivia.component.scss']
 })
-export class TriviaComponent {
+export class TriviaComponent implements OnInit {
   jugo:boolean = false;
   respuestasCorrectas:number = 0;
   valor:any;
+  results!:ResultsInterface;
+  listResults!:ResultsInterface[];  
   @ViewChild('ruleta') ruleta!: ElementRef; 
   @ViewChild('audio') audio!: ElementRef; 
 
-  constructor(private service:TriviaService){
+  constructor(private service:TriviaService, private afsSerivce:GameService, private auth:AuthService){
 
+  }
+
+  ngOnInit(): void {
+    this.afsSerivce.getAll("results").subscribe(x => {
+      this.listResults = x as ResultsInterface[];
+    });
   }
 
   girar(){
@@ -60,11 +72,18 @@ export class TriviaComponent {
             'error'
           );
           if(this.respuestasCorrectas > 0){
-            this.respuestasCorrectas = 0;
-            //TODO subir a firebase
+            
+            this.results.id = Guid.create().toString();
+            this.results.game = "Trivia";
+            this.results.score = this.respuestasCorrectas.toString();
+            this.results.user = this.auth.user.displayName;
+            
+            this.afsSerivce.setObj("results", this.results).then(x =>{
+              
+            });
           }
+          this.respuestasCorrectas = 0;
       }
-      this.jugo = false;
     });
   }
 
@@ -72,8 +91,9 @@ export class TriviaComponent {
 
   getTrivia(tipoTrivia:number){
     this.service.GetPreguntas(tipoTrivia.toString()).subscribe(resp =>{
-      let currentQuestion = resp.results[0] as TriviaModel
+      let currentQuestion = resp.results[0] as TriviaModel;
       this.test(currentQuestion);
+      this.jugo = false;
     });
   }
 

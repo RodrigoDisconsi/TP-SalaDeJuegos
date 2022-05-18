@@ -15,16 +15,21 @@ export class GameService {
       // });
   }
 
-  public setResult(result:any){
-    return this.afs.collection('resultados').add({
-      usuario: this.auth.user,
-      juego: result.juego,
-      puntaje: result.puntaje,
-      fecha: Date.now()
-    });
-  }
-
-  public get(entidad:string) {
+  getAll(entidad:string){
     return this.afs.collection(entidad).valueChanges();
   }
+
+  // getOneActor(idActor:string){
+  //   return 
+  // }
+
+
+  setObj(entidad:string, obj:any){
+    return this.afs.collection(entidad).doc(obj.id).set(obj, {merge: true});
+  }
+
+  removeObj(entidad:string, obj:any){
+    return this.afs.collection(entidad).doc(obj.id).delete();
+  }
+
 }

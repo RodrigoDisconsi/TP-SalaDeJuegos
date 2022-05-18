@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ScoreService } from '../../../services/score.service';
 import { CONTROLS, COLORS, BOARD_SIZE, GAME_MODES } from '../../../models/const';
 import { GameService } from '../../../services/game.service';
+import { ResultsInterface } from 'src/app/models/interface/results-interface';
+import { Guid } from 'guid-typescript';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-snake',
@@ -27,6 +30,7 @@ export class SnakeComponent implements OnInit {
   public gameStarted = false;
   public newBestScore = false;
   public best_score = this.bestScoreService.retrieve();
+  public results:ResultsInterface = {};
 
   private snake = {
     direction: CONTROLS.LEFT,
@@ -45,7 +49,8 @@ export class SnakeComponent implements OnInit {
 
   constructor(
     private bestScoreService: ScoreService,
-    private juegoService: GameService
+    private juegoService: GameService,
+    private auth:AuthService
   ) {
     this.setBoard();
   }
@@ -231,15 +236,13 @@ export class SnakeComponent implements OnInit {
       me.isGameOver = false;
     }, 500);
     
-    this.juegoService.setResult({
-      juego: 'Snake',
-      puntaje: this.score
-    })
-    .then(result => {
-      console.log(result);
-    })
-    .catch(err => {
-      console.log('Error ->', err);
+    this.results.id = Guid.create().toString();
+    this.results.game = "Snake";
+    this.results.score = this.score.toString();
+    this.results.user = this.auth.user.displayName;
+    
+    this.juegoService.setObj("results", this.results).then(x =>{
+      
     });
   }
 
