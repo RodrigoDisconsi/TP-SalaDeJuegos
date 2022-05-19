@@ -31,6 +31,7 @@ export class SnakeComponent implements OnInit {
   public newBestScore = false;
   public best_score = this.bestScoreService.retrieve();
   public results!:ResultsInterface;
+  listResults!:ResultsInterface[];  
 
   private snake = {
     direction: CONTROLS.LEFT,
@@ -55,7 +56,9 @@ export class SnakeComponent implements OnInit {
     this.setBoard();
   }
   ngOnInit(){
-
+    this.juegoService.getGameResult("Snake").subscribe(x => {
+      this.listResults = x as ResultsInterface[];
+    });
   }
 
   handleKeyboardEvents(e: KeyboardEvent) {

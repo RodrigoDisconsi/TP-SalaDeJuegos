@@ -28,7 +28,7 @@ export class TriviaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.afsSerivce.getAll("results").subscribe(x => {
+    this.afsSerivce.getGameResult("Trivia").subscribe(x => {
       this.listResults = x as ResultsInterface[];
     });
   }

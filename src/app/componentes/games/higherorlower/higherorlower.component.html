@@ -24,3 +24,8 @@
 	<div class="card down back" (click)="click($event.target)"></div>
 	<div class="card down back" (click)="click($event.target)"></div>  
 </div>
+
+
+<div class="tabla">
+    <app-table-results *ngIf="listResults" [listResult]="listResults"></app-table-results>
+</div>

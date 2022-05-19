@@ -21,11 +21,15 @@ export class HigherorlowerComponent implements OnInit {
   text:String = " Press card to start. . . ";
   start:boolean = false;
   currentElementCard:number = 9;
-  results:ResultsInterface = {};
+  results!:ResultsInterface;
+  listResults!:ResultsInterface[];
   
   constructor(private afs:GameService, private auth:AuthService) { }
 
   ngOnInit(): void {
+    this.afs.getGameResult("HoL").subscribe(x => {
+      this.listResults = x as ResultsInterface[];
+    });
     this.initCards();
   }
 
@@ -65,11 +69,13 @@ export class HigherorlowerComponent implements OnInit {
         }
         else{
           if(this.respuestasCorrectas > 0){
-            this.results.id = Guid.create().toString();
-            this.results.game = "HoL";
-            this.results.score = this.respuestasCorrectas.toString();
-            this.results.user = this.auth.user.displayName;
-            
+            this.results = {
+              id: Guid.create().toString(),
+              game: "HoL",
+              score: this.respuestasCorrectas.toString(),
+              user: this.auth.user.displayName
+            }
+
             this.afs.setObj("results", this.results).then(x =>{
               
             });

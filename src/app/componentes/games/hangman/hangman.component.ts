@@ -19,6 +19,7 @@ export class HangmanComponent implements OnInit {
   category: string = '';
   restartGameBtnShown = false;
   result!:ResultsInterface;
+  listResults!:ResultsInterface[];
   constructor(
     private hangmanService: HangmanService,
     private afs:GameService,
@@ -30,6 +31,9 @@ export class HangmanComponent implements OnInit {
       this.questions = response.items;
       this.category = response.category;
       this.pickNewQuestion();
+    });
+    this.afs.getGameResult("Hangman").subscribe(x => {
+      this.listResults = x as ResultsInterface[];
     });
   }
 

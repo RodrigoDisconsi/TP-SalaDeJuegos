@@ -19,6 +19,10 @@ export class GameService {
     return this.afs.collection(entidad).valueChanges();
   }
 
+  getGameResult(game:string){
+    return this.afs.collection('results', ref => ref.where('game', '==', game)).valueChanges();
+  }
+
   // getOneActor(idActor:string){
   //   return 
   // }
