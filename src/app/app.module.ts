@@ -29,6 +29,9 @@ import { HigherorlowerComponent } from './componentes/games/higherorlower/higher
 import { HttpClientModule } from '@angular/common/http';
 import { HangmanComponent } from './componentes/games/hangman/hangman.component';
 import { TableResultsComponent } from './componentes/table-results/table-results.component';
+import { HangmanDisplayComponent } from './componentes/games/hangman/hangman-display/hangman-display.component';
+import { HangmanKeyboardComponent } from './componentes/games/hangman/hangman-keyboard/hangman-keyboard.component';
+import { HangmanQuestionComponent } from './componentes/games/hangman/hangman-question/hangman-question.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { TableResultsComponent } from './componentes/table-results/table-results
     TriviaComponent,
     HigherorlowerComponent,
     HangmanComponent,
-    TableResultsComponent
+    TableResultsComponent,
+    HangmanDisplayComponent,
+    HangmanKeyboardComponent,
+    HangmanQuestionComponent
   ],
   imports: [
     BrowserModule,

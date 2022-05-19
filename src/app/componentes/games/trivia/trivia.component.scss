@@ -47,13 +47,14 @@ img {
   
   .button {
     border: 0;
-    margin-top: 10vh;
+    margin-top: 2rem;
     border-radius: $button-border-radius;
     color: $button-text-color;
     cursor: pointer;
     font-family: $button-text-font;
     font-weight: 700;
     letter-spacing: 0.02em;
+    z-index: 1000;
     padding: $button-padding-vertical $button-padding-horizontal;
     text-shadow: $button-text-shadow;
     transition: background $button-animation-time, padding $button-animation-time, margin $button-animation-time, box-shadow $button-animation-time, color $button-animation-time, text-shadow $button-animation-time;

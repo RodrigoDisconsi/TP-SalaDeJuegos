@@ -1,0 +1,39 @@
+.hangman {
+    display: flex;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.keyboard {
+    max-width: 600px;
+    margin: 30px auto;
+    .keys {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+}
+
+.btn {
+    border-radius: 4px;
+    min-width: 36px;
+    min-height: 36px;
+    background-color: rgb(170, 2, 170);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      &:not(.btn--disabled) {
+        opacity: 0.7;
+      }
+    }
+    &--disabled {
+      background-color: #dcdcdc;
+      cursor: default;
+    }
+  }

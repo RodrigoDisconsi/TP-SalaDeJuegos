@@ -73,10 +73,12 @@ export class TriviaComponent implements OnInit {
           );
           if(this.respuestasCorrectas > 0){
             
-            this.results.id = Guid.create().toString();
-            this.results.game = "Trivia";
-            this.results.score = this.respuestasCorrectas.toString();
-            this.results.user = this.auth.user.displayName;
+            this.results = {
+              id: Guid.create().toString(),
+              game: "Trivia",
+              score: this.respuestasCorrectas.toString(),
+              user: this.auth.user.displayName
+            }
             
             this.afsSerivce.setObj("results", this.results).then(x =>{
               

@@ -1,11 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Guid } from 'guid-typescript';
-import { elementAt } from 'rxjs';
 import { ResultsInterface } from 'src/app/models/interface/results-interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { GameService } from 'src/app/services/game.service';
 import Swal from 'sweetalert2';
-import { forEachChild } from 'typescript';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-higherorlower',

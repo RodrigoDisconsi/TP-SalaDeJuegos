@@ -12,10 +12,10 @@ import { LoginActivateGuard } from './guard/login-activate.guard';
 const routes: Routes = [
   {path: '' , component: HomeComponent, canActivate:[LoginActivateGuard]},
   {path: 'Login' , component: LoginRegisterComponent},
-  {path: 'Snake' , component: SnakeComponent},
-  {path: 'HigherOrLower' , component: HigherorlowerComponent},
+  {path: 'Snake' , component: SnakeComponent, canActivate:[LoginActivateGuard]},
+  {path: 'HigherOrLower' , component: HigherorlowerComponent, canActivate:[LoginActivateGuard]},
   {path: 'Trivia' , component: TriviaComponent},
-  {path: 'HangMan' , component: HangmanComponent, canActivate:[LoginActivateGuard]},
+  {path: 'HangMan' , component: HangmanComponent},
   {path: 'AboutMe' , component: AboutComponent, canActivate:[LoginActivateGuard]},
 ];
 

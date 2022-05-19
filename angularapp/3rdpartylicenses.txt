@@ -259,6 +259,9 @@ firebase/messaging
 
 firebase/remote-config
 
+guid-typescript
+ISC
+
 rxjs
 Apache-2.0
                                Apache License
