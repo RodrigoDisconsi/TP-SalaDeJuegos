@@ -3,7 +3,6 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 // import { AngularFirestore} from '@angular/fire/firestore';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'
@@ -33,9 +32,5 @@ export class AuthService {
 
   login(email:string, password:string): Promise<any>{
     return this.fauth.signInWithEmailAndPassword(email,password);
-  }
-
-  async loginGoogle(): Promise<any>{
-    return this.fauth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 }
